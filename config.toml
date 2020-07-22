@@ -1,0 +1,13 @@
+languageCode = "es-es"
+title = "Madrid zona cero"
+googleAnalytics = "UA-330997-1"
+disableHugoGeneratorInject = true
+
+[params]
+	comscore = "7215267"
+	chartbeat = "51507"
+	facebookId = "1482570825397489"
+	description = "Galería de fotos sobre la situación extraordinaria que vive Madrid en estos momentos por el Estado de Alarma por el coronavirus"
+	author = "Carmen Castellón"
+	newsSection = "España"
+	newsImage = "https://www.ecestaticos.com/file/4fa55564aa44468777cb1a9d45731261/1585211887-rrss.jpg"

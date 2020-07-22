@@ -1,0 +1,229 @@
+  <section class="header">
+    <a href="https://www.elconfidencial.com/" target="_blank">
+        <div class="ec-logo-header">
+            <amp-img
+              data-amp-auto-lightbox-disable
+              alt="Logo de El Confidencial"
+              src="https://www.ecestaticos.com/file/56e3fdf95eea6a894eeb851024886946/1499331003-ic_ec_footer.png"
+              width="131"
+              height="15">
+            </amp-img>
+        </div>
+    </a>
+    <div class="header__title">
+      <h1 class="title">Madrid <span class="block--mobile">zona cero</span></h1>
+      <div class="line"></div>
+      <h2 class="subtitle">Diario fotográfico de <span class="block--mobile">la pandemia</span></h2>
+      <div class="authors authors--desktop">
+        <div class="author">
+          <p class="position">Fotografía</p>
+          <p class="name">Carmen Castellón</p>
+        </div>
+        <div class="author">
+          <p class="position">Diseño</p>
+          <p class="name">Pablo López Learte</p>
+        </div>
+        <div class="author">
+          <p class="position">Maqueta</p>
+          <p class="name">Pablo Narváez</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="arrow" on="tap:content.scrollTo(duration=500)">
+      <amp-img 
+        alt="Flecha"
+        src="https://www.ecestaticos.com/file/ac70001860afce5270d416f4ff1ed0a2/1556899580-arrow-down.png"
+        width="30"
+        height="40">
+      </amp-img>
+    </button>
+  </section>
+
+
+  <section id="content" class="content">
+    <div class="authors authors--mobile">
+      <div class="author">
+        <p class="position">Fotografía</p>
+        <p class="name">Carmen Castellón</p>
+      </div>
+      <div class="author">
+        <p class="position">Diseño</p>
+        <p class="name">Pablo López Learte</p>
+      </div>
+      <div class="author">
+        <p class="position">Maqueta</p>
+        <p class="name">Pablo Narváez</p>
+      </div>
+    </div>
+    <amp-position-observer on="enter:bannerShow.start"
+      intersection-ratios="0 1"
+      layout="nodisplay">
+    </amp-position-observer>
+    <amp-position-observer on="exit:bannerHide.start"
+      intersection-ratios="0 1"
+      layout="nodisplay">
+    </amp-position-observer>
+
+    <div class="banner">Madrid zona cero</div>
+    <amp-position-observer on="enter:asideShow.start"
+      intersection-ratios="0 1"
+      layout="nodisplay">
+    </amp-position-observer>
+    <amp-position-observer on="exit:asideHide.start"
+      intersection-ratios="0 1"
+      layout="nodisplay">
+    </amp-position-observer>
+
+    <amp-list
+      layout="fixed-height"
+      width="auto"
+      height="500"
+      src="https://api.elconfidencial.com/service/resource/coronavirus-galeria-fotos/">
+      <template type="amp-mustache">
+
+        <div class="frame {{pictureDisplay}}">
+          <amp-position-observer on="enter:img{{pictureNumber}}Show.start"
+            intersection-ratios="0 0.2"
+            layout="nodisplay">
+          </amp-position-observer>
+            
+          <amp-img
+            data-amp-auto-lightbox-disable
+            media="(min-width:993px)"
+            id="img{{pictureNumber}}"
+            class="img--content"
+            alt="{{title}}"
+            src="{{pictureDesktop}}"
+            width="{{pictureDesktopWidth}}"
+            height="{{pictureDesktopHeight}}"
+            layout="responsive">
+          </amp-img>
+          <amp-img
+            data-amp-auto-lightbox-disable
+            media="(max-width:992px)"
+            id="img{{pictureNumber}}"
+            class="img--content"
+            alt="{{title}}"
+            src="{{pictureMobile}}"
+            width="{{pictureMobileWidth}}"
+            height="{{pictureMobileHeight}}"
+            layout="responsive">
+          </amp-img>
+
+          <div class="frame__container">
+            <div class="day" id="text{{pictureNumber}}">
+              <p class="day__number strong">{{day}}</p>
+              <div class="day--container">
+                <p class="day__title strong">{{title}}</p>
+              </div>
+              <p class="day__text">{{textDescription}}</p>
+              <amp-position-observer on="enter:text{{pictureNumber}}Transition.start"
+                intersection-ratios="0 1"
+                layout="nodisplay"
+                once>
+              </amp-position-observer>
+            </div>
+            <div class="gradient"></div>
+          </div>
+
+          <amp-animation id="img{{pictureNumber}}Show"
+            layout="nodisplay">
+            <script type="application/json">
+              [
+                {
+                  "selector": "#img{{pictureNumber}}",
+                  "duration": 500,
+                  "fill": "forwards",
+                  "keyframes": {
+                    "opacity": 1
+                  }
+                }
+              ]
+            </script>
+          </amp-animation>
+          <amp-animation id="text{{pictureNumber}}Transition"
+            layout="nodisplay">
+            <script type="application/json">
+              [
+               {
+                "selector": "#text{{pictureNumber}}",
+                "duration": 500,
+                "fill": "forwards",
+                "keyframes": {
+                  "opacity": 1
+                  }
+                }
+              ]
+            </script>
+          </amp-animation>
+        </div>
+
+      </template>
+    </amp-list>
+
+  </section>
+
+    <amp-animation id="asideShow"
+      layout="nodisplay">
+      <script type="application/json">
+        [
+          {
+            "selector": ".aside",
+            "duration": 500,
+            "fill": "forwards",
+            "keyframes": {
+              "opacity": 1
+            }
+          }
+        ]
+      </script>
+    </amp-animation>
+
+    <amp-animation id="asideHide"
+      layout="nodisplay">
+      <script type="application/json">
+        [
+          {
+            "selector": ".aside",
+            "duration": 500,
+            "fill": "forwards",
+            "keyframes": {
+              "opacity": 0
+            }
+          }
+        ]
+      </script>
+    </amp-animation>
+
+    <amp-animation id="bannerShow"
+      layout="nodisplay">
+      <script type="application/json">
+        [
+          {
+            "selector": ".banner",
+            "duration": 500,
+            "fill": "forwards",
+            "keyframes": {
+              "opacity": 1
+            }
+          }
+        ]
+      </script>
+    </amp-animation>
+
+    <amp-animation id="bannerHide"
+      layout="nodisplay">
+      <script type="application/json">
+        [
+          {
+            "selector": ".banner",
+            "duration": 500,
+            "fill": "forwards",
+            "keyframes": {
+              "opacity": 0
+            }
+          }
+        ]
+      </script>
+    </amp-animation>
